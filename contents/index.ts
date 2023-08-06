@@ -1,8 +1,9 @@
 import { KeybindingHandler } from './utils/keybindingHandler'
 import { NavigationStackManager } from './utils/navigationStackManager'
 import './style.css'
-import { mountHelpModal } from './HelpModal';
-import { sitesNavigation } from './links';
+import { mountHelpModal } from './components/HelpModal';
+import { sitesNavigation } from './utils/links';
+import type { PlasmoCSConfig } from 'plasmo';
 
 const navManager = new NavigationStackManager();
 const handler = new KeybindingHandler();
@@ -74,3 +75,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 mountHelpModal();
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://news.ycombinator.com/*"] // Only relay messages from this domain
+}

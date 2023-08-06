@@ -2,7 +2,7 @@ import cx from "classnames"
 import { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 
-import { sitesNavigation } from "./links"
+import { sitesNavigation } from "../utils/links"
 
 const reactAppId = "hackernews-keybinding-help-modal"
 
