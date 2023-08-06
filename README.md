@@ -1,6 +1,6 @@
 # Vim-inspired keybinding for HackerNews website
 
-
+https://github.com/Yukaii/hackernews-vim-keybinding/assets/4230968/9e16b212-af1e-44a9-97b5-c025a0e34f76
 
 ## License
 
