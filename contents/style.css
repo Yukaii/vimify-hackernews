@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 tr.athing.active {
   outline: 1px solid #ff6600;
 }

@@ -1,6 +1,6 @@
 import cx from "classnames"
 import { useEffect, useState } from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 
 import { sitesNavigation } from "../utils/links"
 
@@ -13,6 +13,7 @@ function createOrAppendRootContainer() {
   }
   const newRootContainer = document.createElement("div")
   newRootContainer.id = reactAppId
+  newRootContainer.className = "tailwind"
   document.body.appendChild(newRootContainer)
   return newRootContainer
 }
@@ -32,7 +33,7 @@ const postNavigationBindings = [
   { key: "D", description: "Open comments in New Tab" },
   { key: "Escape", description: "Unfocus" },
   { key: "m", description: "Read More" },
-  { key: "r", description: "Reload" },
+  { key: "r", description: "Reload" }
 ]
 
 const siteNavigationBindings = Object.entries(sitesNavigation).map(
@@ -73,14 +74,11 @@ export const HelpModal = () => {
   return (
     <div
       className={cx(
-        "modal p-4 bg-[#F6F6F0] border border-[#ff6600] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+        "modal p-4 bg-[#F6F6F0] border border-solid border-[#ff6600] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 fixed overflow-auto max-h-[70%]",
         {
           hidden: !show
         }
-      )}
-      style={{
-        position: "fixed"
-      }}>
+      )}>
       <h2 className="mb-4 font-bold">Keybindings Help</h2>
 
       <div className="flex flex-col md:flex-row">
@@ -117,5 +115,6 @@ export const HelpModal = () => {
 }
 
 export function mountHelpModal() {
-  ReactDOM.render(<HelpModal />, container)
+  const root = createRoot(container)
+  root.render(<HelpModal />)
 }

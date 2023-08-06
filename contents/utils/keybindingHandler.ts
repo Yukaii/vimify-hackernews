@@ -30,7 +30,10 @@ export class KeybindingHandler {
     }, 1000);  // Clear after 1 second
 
     // Check for matches in keybindings
-    for (let binding in this.keybindings) {
+    // start with longest bindings first  
+    const bindingKeys = Object.keys(this.keybindings).sort((a, b) => b.length - a.length);
+   
+    for (let binding of bindingKeys) {
       if (this.sequenceBuffer.join('').endsWith(binding)) {
         this.keybindings[binding]();
         this.sequenceBuffer = [];  // Clear buffer after successful command
