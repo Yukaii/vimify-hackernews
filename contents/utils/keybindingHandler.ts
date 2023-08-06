@@ -10,6 +10,12 @@ export class KeybindingHandler {
   }
 
   handleKeypress(event: KeyboardEvent): void {
+    const targetElement = event.target as HTMLElement;
+    // If the keypress is inside an input or textarea, return immediately
+    if (targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA') {
+      return;
+    }
+
     const key = event.key;
 
     this.sequenceBuffer.push(key);
