@@ -1,6 +1,8 @@
 import { KeybindingHandler } from './utils/keybindingHandler'
 import { NavigationStackManager } from './utils/navigationStackManager'
 import './style.css'
+import { mountHelpModal } from './HelpModal';
+import { sitesNavigation } from './links';
 
 const navManager = new NavigationStackManager();
 const handler = new KeybindingHandler();
@@ -52,16 +54,6 @@ handler.registerKeybinding('Escape', () => {
   navManager.unfocus();
 });
 
-const sitesNavigation = {
-  'gh': 'https://news.ycombinator.com/news',
-  'gs': 'https://news.ycombinator.com/show',
-  'gt': 'https://news.ycombinator.com/threads',
-  'ga': 'https://news.ycombinator.com/ask',
-  'gj': 'https://news.ycombinator.com/jobs',
-  'gn': 'https://news.ycombinator.com/submit',
-  'gc': 'https://news.ycombinator.com/comments',
-}
-
 for (let key in sitesNavigation) {
   handler.registerKeybinding(key, () => {
     window.location.href = sitesNavigation[key];
@@ -73,6 +65,12 @@ handler.registerKeybinding('m', () => {
   navManager.goToMoreLink();
 });
 
+handler.registerKeybinding('r', () => {
+  window.location.reload();
+});
+
 document.addEventListener('keydown', (event) => {
   handler.handleKeypress(event);
 });
+
+mountHelpModal();

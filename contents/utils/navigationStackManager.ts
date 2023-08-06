@@ -175,9 +175,20 @@ export class NavigationStackManager {
   scrollActiveIntoView(): void {
     const activePost = this.posts[this.activeIndex]
 
-    if (activePost) {
+    const isInViewport = (elem: Element) => {
+      const bounding = elem.getBoundingClientRect()
+      return (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.right <=
+        (window.innerWidth || document.documentElement.clientWidth)
+      )
+    }
+
+    if (activePost && !isInViewport(activePost)) {
       activePost.scrollIntoView({
-        behavior: "smooth",
         block: "center",
         inline: "nearest"
       })
