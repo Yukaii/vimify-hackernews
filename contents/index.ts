@@ -38,6 +38,16 @@ handler.registerKeybinding('U', () => {
   navManager.unvote();
 });
 
+// discussion
+handler.registerKeybinding('d', () => {
+  navManager.openDiscussion();
+});
+
+// discussion in new tab
+handler.registerKeybinding('D', () => {
+  navManager.openDiscussionInNewTab();
+});
+
 handler.registerKeybinding('Escape', () => {
   navManager.unfocus();
 });

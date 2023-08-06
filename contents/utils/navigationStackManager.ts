@@ -78,6 +78,40 @@ export class NavigationStackManager {
     }
   }
 
+  openDiscussion(): void {
+    const actionRow = this.getActivePostActionRow()
+
+    if (!actionRow) {
+      return
+    }
+
+    // span.age > a
+    const discussionLink = actionRow.querySelector(
+      "span.age > a"
+    ) as HTMLAnchorElement
+
+    if (discussionLink) {
+      discussionLink.click()
+    }
+  }
+
+  openDiscussionInNewTab(): void {
+    const actionRow = this.getActivePostActionRow()
+
+    if (!actionRow) {
+      return
+    }
+
+    // span.age > a
+    const discussionLink = actionRow.querySelector(
+      "span.age > a"
+    ) as HTMLAnchorElement
+
+    if (discussionLink) {
+      window.open(discussionLink.href, "_blank")
+    }
+  }
+
   upvote(): void {
     const activePost = this.getActivePost()
 
