@@ -24,7 +24,7 @@ export class NavigationStackManager {
     if (this.initializeIndexIfNecessary()) {
       return
     }
-    
+
     if (this.activeIndex > 0) {
       this.setActive(this.activeIndex - 1)
     }
@@ -52,6 +52,30 @@ export class NavigationStackManager {
     }
 
     this.scrollActiveIntoView()
+  }
+
+  openLink(): void {
+    const activePost = this.getActivePost()
+
+    if (activePost) {
+      const link = activePost.querySelector(".titleline a") as HTMLAnchorElement
+
+      if (link) {
+        link.click()
+      }
+    }
+  }
+
+  openLinkInNewTab(): void {
+    const activePost = this.getActivePost()
+
+    if (activePost) {
+      const link = activePost.querySelector(".titleline a") as HTMLAnchorElement
+
+      if (link) {
+        window.open(link.href, "_blank")
+      }
+    }
   }
 
   unfocus(): void {

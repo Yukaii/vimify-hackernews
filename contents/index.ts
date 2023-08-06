@@ -21,6 +21,14 @@ handler.registerKeybinding('G', () => {
   navManager.jumpToBottom();
 });
 
+handler.registerKeybinding('o', () => {
+  navManager.openLink();
+});
+
+handler.registerKeybinding('O', () => {
+  navManager.openLinkInNewTab();
+});
+
 handler.registerKeybinding('Escape', () => {
   navManager.unfocus();
 });
@@ -32,6 +40,7 @@ const sitesNavigation = {
   'ga': 'https://news.ycombinator.com/ask',
   'gj': 'https://news.ycombinator.com/jobs',
   'gn': 'https://news.ycombinator.com/submit',
+  'gc': 'https://news.ycombinator.com/comments',
 }
 
 for (let key in sitesNavigation) {
