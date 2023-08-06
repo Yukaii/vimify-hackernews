@@ -29,6 +29,15 @@ handler.registerKeybinding('O', () => {
   navManager.openLinkInNewTab();
 });
 
+handler.registerKeybinding('u', () => {
+  navManager.upvote();
+});
+
+// unvote
+handler.registerKeybinding('U', () => {
+  navManager.unvote();
+});
+
 handler.registerKeybinding('Escape', () => {
   navManager.unfocus();
 });

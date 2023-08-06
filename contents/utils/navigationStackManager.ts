@@ -78,6 +78,37 @@ export class NavigationStackManager {
     }
   }
 
+  upvote(): void {
+    const activePost = this.getActivePost()
+
+    if (activePost) {
+      const upvoteLink = activePost.querySelector(
+        ".votelinks a"
+      ) as HTMLAnchorElement
+
+      if (upvoteLink) {
+        upvoteLink.click()
+      }
+    }
+  }
+
+  unvote(): void {
+    const actionRow = this.getActivePostActionRow()
+
+    if (!actionRow) {
+      return
+    }
+
+    // id starts with unv
+    const unvoteLink = actionRow.querySelector(
+      "span[id^='unv'] > a"
+    ) as HTMLAnchorElement
+
+    if (unvoteLink) {
+      unvoteLink.click()
+    }
+  }
+
   unfocus(): void {
     this.posts.forEach((post) => post.classList.remove("active"))
     this.activeIndex = -1
@@ -85,6 +116,14 @@ export class NavigationStackManager {
 
   getActivePost(): PostRowElement {
     return this.posts[this.activeIndex]
+  }
+
+  getActivePostActionRow(): Element {
+    const activePost = this.getActivePost()
+
+    if (activePost) {
+      return activePost.nextElementSibling
+    }
   }
 
   initializeIndexIfNecessary(): boolean {
