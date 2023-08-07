@@ -146,7 +146,6 @@ export class NavigationStackManager {
 
     if (activePost) {
       activePost.scrollIntoView({
-        behavior: "smooth",
         block: "center",
         inline: "center"
       })
@@ -158,7 +157,6 @@ export class NavigationStackManager {
 
     if (activePost) {
       activePost.scrollIntoView({
-        behavior: "smooth",
         block: "start",
         inline: "nearest"
       })
@@ -170,7 +168,6 @@ export class NavigationStackManager {
 
     if (activePost) {
       activePost.scrollIntoView({
-        behavior: "smooth",
         block: "end",
         inline: "nearest"
       })
