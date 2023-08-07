@@ -42,6 +42,13 @@ https://github.com/Yukaii/hackernews-vim-keybinding/assets/4230968/9e16b212-af1e
 
 https://chat.openai.com/share/dc85aa8e-039d-48ae-84a9-eb72289d5992
 
+## Prior Works
+
+I knew some may exist, but I want to make my own version 🤣.
+
+- `hackernews-platinum`: https://github.com/fberger/hackernews-platinum
+- `hacker-news-keyboard-navigation`: https://github.com/ZYinMD/hacker-news-keyboard-navigation
+
 ## License
 
 MIT
