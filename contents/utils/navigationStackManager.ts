@@ -4,11 +4,14 @@ export class NavigationStackManager {
   private posts: Array<PostRowElement>
   private activeIndex: number = -1
 
+  private navigationIndexHistory: number[] = []
+  private navigationIndexHistoryIndex: number = -1
+
   constructor() {
     this.posts = Array.from(document.querySelectorAll("tr.athing"))
   }
 
-  setActive(index: number): void {
+  setActive(index: number, ignoreHistory?: boolean): void {
     // Clear the existing active post if any
     this.posts.forEach((post) => post.classList.remove("active"))
 
@@ -16,6 +19,35 @@ export class NavigationStackManager {
     if (this.posts[index]) {
       this.posts[index].classList.add("active")
       this.activeIndex = index
+    }
+
+    if (!ignoreHistory) {
+      // rewrite history
+      this.navigationIndexHistory = this.navigationIndexHistory.slice(
+        0,
+        this.navigationIndexHistoryIndex + 1
+      )
+
+      this.navigationIndexHistory.push(index)
+      this.navigationIndexHistoryIndex += 1
+    }
+  }
+
+  navigateBack(): void {
+    if (this.navigationIndexHistoryIndex > 0) {
+      this.navigationIndexHistoryIndex -= 1
+      this.setActive(this.navigationIndexHistory[this.navigationIndexHistoryIndex], true)
+
+      this.scrollActiveIntoView()
+    }
+  }
+
+  navigateForward(): void {
+    if (this.navigationIndexHistoryIndex < this.navigationIndexHistory.length - 1) {
+      this.navigationIndexHistoryIndex += 1
+      this.setActive(this.navigationIndexHistory[this.navigationIndexHistoryIndex], true)
+
+      this.scrollActiveIntoView()
     }
   }
 

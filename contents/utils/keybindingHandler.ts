@@ -20,12 +20,19 @@ export class KeybindingHandler {
       return
     }
 
-    const key = event.key
+    let key = event.key
 
     // If a number is pressed, store it in countBuffer
     if (/\d/.test(key)) {
       this.countBuffer += key
       return
+    }
+
+    // Capture Meta and Control key combinations
+    if (event.metaKey) {
+      key = `Meta+${key}`;
+    } else if (event.ctrlKey) {
+      key = `Ctrl+${key}`;
     }
 
     this.sequenceBuffer.push(key)

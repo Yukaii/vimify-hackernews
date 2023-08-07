@@ -37,7 +37,9 @@ const postNavigationBindings = [
   { key: "r", description: "Reload" },
   { key: "zz", description: "Scroll active item to center" },
   { key: "zt", description: "Scroll active item to top" },
-  { key: "zb", description: "Scroll active item to bottom" }
+  { key: "zb", description: "Scroll active item to bottom" },
+  { key: "Ctrl+o", description: "Navigate back" },
+  { key: "Ctrl+i", description: "Navigate forward" },
 ]
 
 const siteNavigationBindings = Object.entries(sitesNavigation).map(

@@ -67,6 +67,14 @@ handler.registerKeybinding('Escape', () => {
   navManager.unfocus();
 });
 
+handler.registerKeybinding('Ctrl+o', () => {
+  navManager.navigateBack();
+});
+
+handler.registerKeybinding('Ctrl+i', () => {
+  navManager.navigateForward();
+});
+
 for (let key in sitesNavigation) {
   handler.registerKeybinding(key, () => {
     window.location.href = sitesNavigation[key];
