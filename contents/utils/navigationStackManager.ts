@@ -1,5 +1,17 @@
 type PostRowElement = Element
 
+const isInViewport = (elem: Element) => {
+  const bounding = elem.getBoundingClientRect()
+  return (
+    bounding.top >= 0 &&
+    bounding.left >= 0 &&
+    bounding.bottom <=
+    (window.innerHeight || document.documentElement.clientHeight) &&
+    bounding.right <=
+    (window.innerWidth || document.documentElement.clientWidth)
+  )
+}
+
 export class NavigationStackManager {
   private posts: Array<PostRowElement>
   private activeIndex: number = -1
@@ -36,23 +48,31 @@ export class NavigationStackManager {
   navigateBack(): void {
     if (this.navigationIndexHistoryIndex > 0) {
       this.navigationIndexHistoryIndex -= 1
-      this.setActive(this.navigationIndexHistory[this.navigationIndexHistoryIndex], true)
+      this.setActive(
+        this.navigationIndexHistory[this.navigationIndexHistoryIndex],
+        true
+      )
 
       this.scrollActiveIntoView()
     }
   }
 
   navigateForward(): void {
-    if (this.navigationIndexHistoryIndex < this.navigationIndexHistory.length - 1) {
+    if (
+      this.navigationIndexHistoryIndex <
+      this.navigationIndexHistory.length - 1
+    ) {
       this.navigationIndexHistoryIndex += 1
-      this.setActive(this.navigationIndexHistory[this.navigationIndexHistoryIndex], true)
+      this.setActive(
+        this.navigationIndexHistory[this.navigationIndexHistoryIndex],
+        true
+      )
 
       this.scrollActiveIntoView()
     }
   }
 
   navigateUp(count?: number): void {
-    this.initializeIndexIfNecessary()
     if (this.initializeIndexIfNecessary()) {
       return
     }
@@ -83,13 +103,15 @@ export class NavigationStackManager {
     if (count) {
       // find target post
       const targetPostIndex = this.posts.findIndex((post) => {
-        return post.querySelector(".rank")?.textContent?.trim()?.match(count.toString())
+        return post
+          .querySelector(".rank")
+          ?.textContent?.trim()
+          ?.match(count.toString())
       })
 
       if (targetPostIndex !== -1) {
         this.setActive(targetPostIndex)
       }
-
     } else {
       this.setActive(this.posts.length - 1)
     }
@@ -126,7 +148,7 @@ export class NavigationStackManager {
       activePost.scrollIntoView({
         behavior: "smooth",
         block: "center",
-        inline: "center",
+        inline: "center"
       })
     }
   }
@@ -138,7 +160,7 @@ export class NavigationStackManager {
       activePost.scrollIntoView({
         behavior: "smooth",
         block: "start",
-        inline: "nearest",
+        inline: "nearest"
       })
     }
   }
@@ -150,7 +172,7 @@ export class NavigationStackManager {
       activePost.scrollIntoView({
         behavior: "smooth",
         block: "end",
-        inline: "nearest",
+        inline: "nearest"
       })
     }
   }
@@ -263,7 +285,13 @@ export class NavigationStackManager {
 
   initializeIndexIfNecessary(): boolean {
     if (this.activeIndex === -1) {
-      this.setActive(0)
+      const nearestPostIndex = this.findNearestPostIndexInViewport()
+
+      if (nearestPostIndex !== -1) {
+        this.setActive(nearestPostIndex)
+      } else {
+        this.setActive(0)
+      }
 
       this.scrollActiveIntoView()
 
@@ -275,18 +303,6 @@ export class NavigationStackManager {
 
   scrollActiveIntoView(): void {
     const activePost = this.posts[this.activeIndex]
-
-    const isInViewport = (elem: Element) => {
-      const bounding = elem.getBoundingClientRect()
-      return (
-        bounding.top >= 0 &&
-        bounding.left >= 0 &&
-        bounding.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-        bounding.right <=
-        (window.innerWidth || document.documentElement.clientWidth)
-      )
-    }
 
     if (activePost && !isInViewport(activePost)) {
       activePost.scrollIntoView({
@@ -302,6 +318,20 @@ export class NavigationStackManager {
     if (moreLink) {
       moreLink.click()
     }
+  }
+
+  private findNearestPostIndexInViewport(): number {
+    const posts = document.querySelectorAll(".athing")
+
+    for (let i = 0; i < posts.length; i++) {
+      const post = posts[i]
+
+      if (isInViewport(post)) {
+        return i
+      }
+    }
+
+    return -1
   }
 
   private getMoreLink(): HTMLAnchorElement {
