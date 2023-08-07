@@ -1,11 +1,11 @@
 type PostRowElement = Element
 
 export class NavigationStackManager {
-  private posts: NodeListOf<PostRowElement>
+  private posts: Array<PostRowElement>
   private activeIndex: number = -1
 
   constructor() {
-    this.posts = document.querySelectorAll("tr.athing")
+    this.posts = Array.from(document.querySelectorAll("tr.athing"))
   }
 
   setActive(index: number): void {
@@ -49,7 +49,15 @@ export class NavigationStackManager {
 
   jumpToBottom(count?: number): void {
     if (count) {
-      this.setActive(count - 1)
+      // find target post
+      const targetPostIndex = this.posts.findIndex((post) => {
+        return post.querySelector(".rank")?.textContent?.trim()?.match(count.toString())
+      })
+
+      if (targetPostIndex !== -1) {
+        this.setActive(targetPostIndex)
+      }
+
     } else {
       this.setActive(this.posts.length - 1)
     }

@@ -38,7 +38,7 @@ export class KeybindingHandler {
     this.sequenceTimeout = setTimeout(() => {
       this.sequenceBuffer = []
       this.countBuffer = ""
-    }, 1000) // Clear after 1 second
+    }, 10 * 1000) // Clear after 10 second
 
     // Check for matches in keybindings
     // start with longest bindings first
