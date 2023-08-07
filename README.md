@@ -1,5 +1,7 @@
 # Vim-inspired keybinding for HackerNews website
 
+<img src="./assets/icon.png" width="300">
+
 https://github.com/Yukaii/hackernews-vim-keybinding/assets/4230968/9e16b212-af1e-44a9-97b5-c025a0e34f76
 
 ## Usage
