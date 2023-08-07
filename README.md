@@ -13,8 +13,8 @@ https://github.com/Yukaii/hackernews-vim-keybinding/assets/4230968/9e16b212-af1e
 | `<num>G`   | Jump to `<num>`th            |
 | `o`        | Open Link                    |
 | `O`        | Open Link in New Tab         |
-| `u`        | Upvote                       |
-| `U`        | Unvote                       |
+| `v`        | Upvote                       |
+| `u`        | Unvote                       |
 | `d`        | Open comments                |
 | `D`        | Open comments in New Tab     |
 | `Escape`   | Unfocus                      |

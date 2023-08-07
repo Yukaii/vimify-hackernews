@@ -44,12 +44,12 @@ handler.registerKeybinding('O', () => {
   navManager.openLinkInNewTab();
 });
 
-handler.registerKeybinding('u', () => {
+handler.registerKeybinding('v', () => {
   navManager.upvote();
 });
 
 // unvote
-handler.registerKeybinding('U', () => {
+handler.registerKeybinding('u', () => {
   navManager.unvote();
 });
 
