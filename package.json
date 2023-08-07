@@ -1,6 +1,6 @@
 {
   "name": "hackernews-keyboard-shortcut",
-  "displayName": "Hackernews keyboard shortcut",
+  "displayName": "Vimify Hackernews",
   "version": "0.0.1",
   "description": "A browser extension that adds vim-inspired keyboard shortcuts to hackernews",
   "author": "Yukai Huang",
