@@ -8,20 +8,32 @@ import type { PlasmoCSConfig } from 'plasmo';
 const navManager = new NavigationStackManager();
 const handler = new KeybindingHandler();
 
-handler.registerKeybinding('j', () => {
-  navManager.navigateDown();
+handler.registerKeybinding('j', (count) => {
+  navManager.navigateDown(count);
 });
 
-handler.registerKeybinding('k', () => {
-  navManager.navigateUp();
+handler.registerKeybinding('k', (count) => {
+  navManager.navigateUp(count);
 });
 
 handler.registerKeybinding('gg', () => {
   navManager.jumpToTop();
 });
 
-handler.registerKeybinding('G', () => {
-  navManager.jumpToBottom();
+handler.registerKeybinding('G', (count) => {
+  navManager.jumpToBottom(count);
+});
+
+handler.registerKeybinding('zz', () => {
+  navManager.centerScroll();
+});
+
+handler.registerKeybinding('zt', () => {
+  navManager.alignTopScroll();
+});
+
+handler.registerKeybinding('zb', () => {
+  navManager.alignBottomScroll();
 });
 
 handler.registerKeybinding('o', () => {

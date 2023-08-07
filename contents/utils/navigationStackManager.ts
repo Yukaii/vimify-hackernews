@@ -19,14 +19,24 @@ export class NavigationStackManager {
     }
   }
 
-  navigateUp(): void {
+  navigateUp(count?: number): void {
     this.initializeIndexIfNecessary()
     if (this.initializeIndexIfNecessary()) {
       return
     }
 
-    if (this.activeIndex > 0) {
-      this.setActive(this.activeIndex - 1)
+    if (count) {
+      const targetIndex = this.activeIndex - count
+
+      if (targetIndex >= 0) {
+        this.setActive(targetIndex)
+      } else {
+        this.setActive(0)
+      }
+    } else {
+      if (this.activeIndex > 0) {
+        this.setActive(this.activeIndex - 1)
+      }
     }
 
     this.scrollActiveIntoView()
@@ -37,21 +47,72 @@ export class NavigationStackManager {
     this.scrollActiveIntoView()
   }
 
-  jumpToBottom(): void {
-    this.setActive(this.posts.length - 1)
+  jumpToBottom(count?: number): void {
+    if (count) {
+      this.setActive(count - 1)
+    } else {
+      this.setActive(this.posts.length - 1)
+    }
+
     this.scrollActiveIntoView()
   }
 
-  navigateDown(): void {
+  navigateDown(count?: number): void {
     if (this.initializeIndexIfNecessary()) {
       return
     }
 
-    if (this.activeIndex < this.posts.length - 1) {
-      this.setActive(this.activeIndex + 1)
+    if (count) {
+      const targetIndex = this.activeIndex + count
+
+      if (targetIndex < this.posts.length) {
+        this.setActive(targetIndex)
+      } else {
+        this.setActive(this.posts.length - 1)
+      }
+    } else {
+      if (this.activeIndex < this.posts.length - 1) {
+        this.setActive(this.activeIndex + 1)
+      }
     }
 
     this.scrollActiveIntoView()
+  }
+
+  centerScroll(): void {
+    const activePost = this.getActivePost()
+
+    if (activePost) {
+      activePost.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      })
+    }
+  }
+
+  alignTopScroll(): void {
+    const activePost = this.getActivePost()
+
+    if (activePost) {
+      activePost.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      })
+    }
+  }
+
+  alignBottomScroll(): void {
+    const activePost = this.getActivePost()
+
+    if (activePost) {
+      activePost.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      })
+    }
   }
 
   openLink(): void {

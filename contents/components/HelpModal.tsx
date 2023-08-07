@@ -21,10 +21,11 @@ function createOrAppendRootContainer() {
 const container = createOrAppendRootContainer()
 
 const postNavigationBindings = [
-  { key: "j", description: "Navigate Down" },
-  { key: "k", description: "Navigate Up" },
+  { key: "<num>j", description: "Navigate Down" },
+  { key: "<num>k", description: "Navigate Up" },
   { key: "gg", description: "Jump to first" },
   { key: "G", description: "Jump to last" },
+  { key: "<num>G", description: "Jump to <num>th" },
   { key: "o", description: "Open Link" },
   { key: "O", description: "Open Link in New Tab" },
   { key: "u", description: "Upvote" },
@@ -33,7 +34,10 @@ const postNavigationBindings = [
   { key: "D", description: "Open comments in New Tab" },
   { key: "Escape", description: "Unfocus" },
   { key: "m", description: "Read More" },
-  { key: "r", description: "Reload" }
+  { key: "r", description: "Reload" },
+  { key: "zz", description: "Scroll active item to center" },
+  { key: "zt", description: "Scroll active item to top" },
+  { key: "zb", description: "Scroll active item to bottom" },
 ]
 
 const siteNavigationBindings = Object.entries(sitesNavigation).map(
