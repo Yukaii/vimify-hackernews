@@ -1,4 +1,4 @@
-# Vimify HackerNews - Vim-inpired keybinding for navigate HackerNews
+# Vimify HackerNews - Vim-inpired keybinding to navigate HackerNews
 
 <img src="./assets/icon.png" width="300">
 
