@@ -37,7 +37,7 @@ const postNavigationBindings = [
   { key: "r", description: "Reload" },
   { key: "zz", description: "Scroll active item to center" },
   { key: "zt", description: "Scroll active item to top" },
-  { key: "zb", description: "Scroll active item to bottom" },
+  { key: "zb", description: "Scroll active item to bottom" }
 ]
 
 const siteNavigationBindings = Object.entries(sitesNavigation).map(
@@ -45,6 +45,12 @@ const siteNavigationBindings = Object.entries(sitesNavigation).map(
     key,
     description: `Go to ${new URL(value).pathname.split("/").pop()}`
   })
+)
+
+const Kbd = ({ children }: { children: string }) => (
+  <kbd className="py-0.5 px-1 text-xs bg-gray-100 rounded border border-gray-300 border-solid">
+    {children}
+  </kbd>
 )
 
 export const HelpModal = () => {
@@ -83,32 +89,26 @@ export const HelpModal = () => {
           hidden: !show
         }
       )}>
-      <h2 className="mb-4 font-bold">Keybindings Help</h2>
+      <h2 className="my-0 text-lg font-bold">Keybindings Help</h2>
 
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col gap-4 md:flex-row">
         <div>
-          <h3 className="mb-2">Post Navigation:</h3>
-          <ul className="pl-5 mb-4 list-disc">
+          <h3 className="mb-1">Navigation:</h3>
+          <ul className="pl-5 leading-6 list-disc">
             {postNavigationBindings.map((binding) => (
               <li key={binding.key}>
-                <kbd className="p-1 bg-gray-100 rounded border">
-                  {binding.key}
-                </kbd>
-                : {binding.description}
+                <Kbd>{binding.key}</Kbd>: {binding.description}
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h3 className="mb-2">Site Navigation:</h3>
-          <ul className="pl-5 list-disc">
+          <h3 className="mb-1">Site Navigation:</h3>
+          <ul className="pl-5 leading-6 list-disc">
             {siteNavigationBindings.map((binding) => (
               <li key={binding.key}>
-                <kbd className="p-1 bg-gray-100 rounded border">
-                  {binding.key}
-                </kbd>
-                : {binding.description}
+                <Kbd>{binding.key}</Kbd>: {binding.description}
               </li>
             ))}
           </ul>
