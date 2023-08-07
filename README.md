@@ -2,6 +2,10 @@
 
 https://github.com/Yukaii/hackernews-vim-keybinding/assets/4230968/9e16b212-af1e-44a9-97b5-c025a0e34f76
 
+## Special Thanks to GPT-4 chan
+
+https://chat.openai.com/share/dc85aa8e-039d-48ae-84a9-eb72289d5992
+
 ## License
 
 MIT
