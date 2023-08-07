@@ -2,6 +2,42 @@
 
 https://github.com/Yukaii/hackernews-vim-keybinding/assets/4230968/9e16b212-af1e-44a9-97b5-c025a0e34f76
 
+## Usage
+
+| Keybinding | Description                  |
+| :--------- | :--------------------------- |
+| `<num>j`   | Navigate Down                |
+| `<num>k`   | Navigate Up                  |
+| `gg`       | Jump to first                |
+| `G`        | Jump to last                 |
+| `<num>G`   | Jump to `<num>`th            |
+| `o`        | Open Link                    |
+| `O`        | Open Link in New Tab         |
+| `u`        | Upvote                       |
+| `U`        | Unvote                       |
+| `d`        | Open comments                |
+| `D`        | Open comments in New Tab     |
+| `Escape`   | Unfocus                      |
+| `m`        | Read More                    |
+| `r`        | Reload                       |
+| `zz`       | Scroll active item to center |
+| `zt`       | Scroll active item to top    |
+| `zb`       | Scroll active item to bottom |
+| `Ctrl+o`   | Navigate back                |
+| `Ctrl+i`   | Navigate forward             |
+
+### Site navigation
+
+| Keybinding | URL                                                                                  |
+| :--------- | :----------------------------------------------------------------------------------- |
+| `gh`       | [https://news.ycombinator.com/news](https://news.ycombinator.com/news)               |
+| `gs`       | [https://news.ycombinator.com/show](https://news.ycombinator.com/show)               |
+| `gt`       | Go to Threads                                                                        |
+| `ga`       | [https://news.ycombinator.com/ask](https://news.ycombinator.com/ask)                 |
+| `gj`       | [https://news.ycombinator.com/jobs](https://news.ycombinator.com/jobs)               |
+| `gn`       | [https://news.ycombinator.com/submit](https://news.ycombinator.com/submit)           |
+| `gc`       | [https://news.ycombinator.com/newcomments](https://news.ycombinator.com/newcomments) |
+
 ## Special Thanks to GPT-4 chan
 
 https://chat.openai.com/share/dc85aa8e-039d-48ae-84a9-eb72289d5992
@@ -9,7 +45,6 @@ https://chat.openai.com/share/dc85aa8e-039d-48ae-84a9-eb72289d5992
 ## License
 
 MIT
-
 
 <!-- Plasmo archived
 
