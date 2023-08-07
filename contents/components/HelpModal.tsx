@@ -89,11 +89,11 @@ export const HelpModal = () => {
           hidden: !show
         }
       )}>
-      <h2 className="my-0 text-lg font-bold">Keybindings Help</h2>
+      <h2 className="my-0 text-sm font-bold">Keybindings Help</h2>
 
       <div className="flex flex-col gap-4 md:flex-row">
         <div>
-          <h3 className="mb-1">Navigation:</h3>
+          <h3 className="mb-1 text-sm">Navigation:</h3>
           <ul className="pl-5 leading-6 list-disc">
             {postNavigationBindings.map((binding) => (
               <li key={binding.key}>
@@ -104,7 +104,7 @@ export const HelpModal = () => {
         </div>
 
         <div>
-          <h3 className="mb-1">Site Navigation:</h3>
+          <h3 className="mb-1 text-sm">Site Navigation:</h3>
           <ul className="pl-5 leading-6 list-disc">
             {siteNavigationBindings.map((binding) => (
               <li key={binding.key}>
