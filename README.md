@@ -46,8 +46,11 @@ https://chat.openai.com/share/dc85aa8e-039d-48ae-84a9-eb72289d5992
 
 I knew some may exist, but I want to make my own version 🤣.
 
+- Refined Hacker News: https://github.com/plibither8/refined-hacker-news
+    - Support many features. My extension only focus on vim style keyboard navigation with my own taste.
 - `hackernews-platinum`: https://github.com/fberger/hackernews-platinum
 - `hacker-news-keyboard-navigation`: https://github.com/ZYinMD/hacker-news-keyboard-navigation
+- `hackercut`: https://chrome.google.com/webstore/detail/hacker-news-shortcut/dmiimkldokblocpmleogaeohkbffnobo
 
 ## License
 
