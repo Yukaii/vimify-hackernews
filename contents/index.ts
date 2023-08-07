@@ -94,6 +94,11 @@ document.addEventListener('keydown', (event) => {
   handler.handleKeypress(event);
 });
 
+// mouse click to unfocus
+document.addEventListener('click', () => {
+  navManager.unfocus();
+});
+
 mountHelpModal();
 
 export const config: PlasmoCSConfig = {
