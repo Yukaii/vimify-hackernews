@@ -1,5 +1,7 @@
 # Vimify HackerNews - Vim-inpired keybinding to navigate HackerNews
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/mfbnahmjgjaneipfjhepbdbnfiochcgp)](https://chrome.google.com/webstore/detail/vimify-hackernews/mfbnahmjgjaneipfjhepbdbnfiochcgp)
+
 <img src="./assets/icon.png" width="300">
 
 https://github.com/Yukaii/hackernews-vim-keybinding/assets/4230968/9e16b212-af1e-44a9-97b5-c025a0e34f76
