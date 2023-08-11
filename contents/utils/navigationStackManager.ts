@@ -15,12 +15,19 @@ const isInViewport = (elem: Element) => {
 export class NavigationStackManager {
   private posts: Array<PostRowElement>
   private activeIndex: number = -1
+  private rowHeight: number
 
   private navigationIndexHistory: number[] = []
   private navigationIndexHistoryIndex: number = -1
 
   constructor() {
     this.posts = Array.from(document.querySelectorAll("tr.athing"))
+    this.rowHeight = this.calculateRowHeight()
+
+    // recalculate row height on resize
+    window.addEventListener("resize", () => {
+      this.rowHeight = this.calculateRowHeight()
+    })
   }
 
   setActive(index: number, ignoreHistory?: boolean): void {
@@ -317,6 +324,58 @@ export class NavigationStackManager {
     }
   }
 
+  scrollDownHalfPage(): void {
+    const rowHeight = this.rowHeight || this.calculateRowHeight()
+
+    if (rowHeight) {
+      // calculate how many rows fit in half the viewport
+      const rows = Math.floor(window.innerHeight / rowHeight / 2)
+
+      this.navigateDown(rows)
+    } else {
+      return
+    }
+  }
+
+  scrollUpHalfPage(): void {
+    const rowHeight = this.rowHeight || this.calculateRowHeight()
+
+    if (rowHeight) {
+      // calculate how many rows fit in half the viewport
+      const rows = Math.floor(window.innerHeight / rowHeight / 2)
+
+      this.navigateUp(rows)
+    } else {
+      return
+    }
+  }
+
+  scrollDownPage(): void {
+    const rowHeight = this.rowHeight || this.calculateRowHeight()
+
+    if (rowHeight) {
+      // calculate how many rows fit in the viewport
+      const rows = Math.floor(window.innerHeight / rowHeight)
+
+      this.navigateDown(rows)
+    } else {
+      return
+    }
+  }
+
+  scrollUpPage(): void {
+    const rowHeight = this.rowHeight || this.calculateRowHeight()
+
+    if (rowHeight) {
+      // calculate how many rows fit in the viewport
+      const rows = Math.floor(window.innerHeight / rowHeight)
+
+      this.navigateUp(rows)
+    } else {
+      return
+    }
+  }
+
   private findNearestPostIndexInViewport(): number {
     const posts = document.querySelectorAll(".athing")
 
@@ -334,4 +393,16 @@ export class NavigationStackManager {
   private getMoreLink(): HTMLAnchorElement {
     return document.querySelector("a.morelink")
   }
+
+  private calculateRowHeight(): number {
+    const firstPost = this.posts[0]
+    const secondPost = this.posts[1]
+
+    if (firstPost && secondPost) {
+      return secondPost.getBoundingClientRect().top - firstPost.getBoundingClientRect().top
+    }
+
+    return 0
+  }
+
 }

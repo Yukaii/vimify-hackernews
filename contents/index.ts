@@ -75,6 +75,22 @@ handler.registerKeybinding('Ctrl+i', () => {
   navManager.navigateForward();
 });
 
+handler.registerKeybinding('Ctrl+d', () => {
+  navManager.scrollDownHalfPage();
+});
+
+handler.registerKeybinding('Ctrl+u', () => {
+  navManager.scrollUpHalfPage();
+});
+
+handler.registerKeybinding('Ctrl+f', () => {
+  navManager.scrollDownPage();
+});
+
+handler.registerKeybinding('Ctrl+b', () => {
+  navManager.scrollUpPage();
+});
+
 for (let key in sitesNavigation) {
   handler.registerKeybinding(key, () => {
     window.location.href = sitesNavigation[key];

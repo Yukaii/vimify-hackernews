@@ -40,6 +40,10 @@ const postNavigationBindings = [
   { key: "zb", description: "Scroll active item to bottom" },
   { key: "Ctrl+o", description: "Navigate back" },
   { key: "Ctrl+i", description: "Navigate forward" },
+  { key: "Ctrl+d", description: "Scroll down half page" },
+  { key: "Ctrl+u", description: "Scroll up half page" },
+  { key: "Ctrl+f", description: "Scroll down full page" },
+  { key: "Ctrl+b", description: "Scroll up full page" }
 ]
 
 const siteNavigationBindings = Object.entries(sitesNavigation).map(
