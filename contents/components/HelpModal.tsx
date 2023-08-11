@@ -1,5 +1,5 @@
 import cx from "classnames"
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { createRoot } from "react-dom/client"
 
 import { sitesNavigation } from "../utils/links"
@@ -99,25 +99,32 @@ export const HelpModal = () => {
 
       <div className="flex flex-col gap-4 md:flex-row">
         <div>
-          <h3 className="mb-1 text-sm">Navigation:</h3>
-          <ul className="pl-5 leading-6 list-disc">
+          <h3 className="mb-3 text-sm text-center">Navigation</h3>
+          {/* place shortcut and description in grid columns */}
+          <div className="grid grid-cols-2 gap-2 items-center">
             {postNavigationBindings.map((binding) => (
-              <li key={binding.key}>
-                <Kbd>{binding.key}</Kbd>: {binding.description}
-              </li>
+              <Fragment key={binding.key}>
+                <span className="text-right">
+                  <Kbd>{binding.key}</Kbd>
+                </span>
+                <span>{binding.description}</span>
+              </Fragment>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div>
-          <h3 className="mb-1 text-sm">Site Navigation:</h3>
-          <ul className="pl-5 leading-6 list-disc">
+          <h3 className="mb-3 text-sm text-center">Site Navigation</h3>
+          <div className="grid grid-cols-2 gap-2 items-center">
             {siteNavigationBindings.map((binding) => (
-              <li key={binding.key}>
-                <Kbd>{binding.key}</Kbd>: {binding.description}
-              </li>
+              <Fragment key={binding.key}>
+                <span className="text-right">
+                  <Kbd>{binding.key}</Kbd>
+                </span>
+                <span>{binding.description}</span>
+              </Fragment>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>
