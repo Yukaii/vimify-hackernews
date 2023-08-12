@@ -3,7 +3,7 @@ type KeybindingCallback = (count?: number) => void
 export class KeybindingHandler {
   private keybindings: { [key: string]: KeybindingCallback } = {}
   private sequenceBuffer: string[] = []
-  private sequenceTimeout: any = null
+  private sequenceTimeout: number | null = null
   private countBuffer: string = ""
 
   registerKeybinding(key: string, callback: KeybindingCallback): void {
@@ -30,9 +30,9 @@ export class KeybindingHandler {
 
     // Capture Meta and Control key combinations
     if (event.metaKey) {
-      key = `Meta+${key}`;
+      key = `Meta+${key}`
     } else if (event.ctrlKey) {
-      key = `Ctrl+${key}`;
+      key = `Ctrl+${key}`
     }
 
     this.sequenceBuffer.push(key)
@@ -42,7 +42,7 @@ export class KeybindingHandler {
       clearTimeout(this.sequenceTimeout)
     }
 
-    this.sequenceTimeout = setTimeout(() => {
+    this.sequenceTimeout = window.setTimeout(() => {
       this.sequenceBuffer = []
       this.countBuffer = ""
     }, 10 * 1000) // Clear after 10 second
@@ -53,7 +53,7 @@ export class KeybindingHandler {
       (a, b) => b.length - a.length
     )
 
-    for (let binding of bindingKeys) {
+    for (const binding of bindingKeys) {
       if (this.sequenceBuffer.join("").endsWith(binding)) {
         const count = this.countBuffer ? parseInt(this.countBuffer) : undefined
         this.keybindings[binding](count)

@@ -1,6 +1,4 @@
-const threadsAnchors = document.querySelectorAll(
-  ".pagetop a"
-)
+const threadsAnchors = document.querySelectorAll(".pagetop a")
 
 const threadsAnchor = Array.from(threadsAnchors).find(
   (anchor: HTMLAnchorElement) => anchor.innerText === "threads"

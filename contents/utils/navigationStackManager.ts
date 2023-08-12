@@ -6,9 +6,9 @@ const isInViewport = (elem: Element) => {
     bounding.top >= 0 &&
     bounding.left >= 0 &&
     bounding.bottom <=
-    (window.innerHeight || document.documentElement.clientHeight) &&
+      (window.innerHeight || document.documentElement.clientHeight) &&
     bounding.right <=
-    (window.innerWidth || document.documentElement.clientWidth)
+      (window.innerWidth || document.documentElement.clientWidth)
   )
 }
 
@@ -332,8 +332,6 @@ export class NavigationStackManager {
       const rows = Math.floor(window.innerHeight / rowHeight / 2)
 
       this.navigateDown(rows)
-    } else {
-      return
     }
   }
 
@@ -345,8 +343,6 @@ export class NavigationStackManager {
       const rows = Math.floor(window.innerHeight / rowHeight / 2)
 
       this.navigateUp(rows)
-    } else {
-      return
     }
   }
 
@@ -358,8 +354,6 @@ export class NavigationStackManager {
       const rows = Math.floor(window.innerHeight / rowHeight)
 
       this.navigateDown(rows)
-    } else {
-      return
     }
   }
 
@@ -371,8 +365,6 @@ export class NavigationStackManager {
       const rows = Math.floor(window.innerHeight / rowHeight)
 
       this.navigateUp(rows)
-    } else {
-      return
     }
   }
 
@@ -399,10 +391,12 @@ export class NavigationStackManager {
     const secondPost = this.posts[1]
 
     if (firstPost && secondPost) {
-      return secondPost.getBoundingClientRect().top - firstPost.getBoundingClientRect().top
+      return (
+        secondPost.getBoundingClientRect().top -
+        firstPost.getBoundingClientRect().top
+      )
     }
 
     return 0
   }
-
 }
